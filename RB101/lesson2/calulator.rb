@@ -11,7 +11,7 @@ number_one = gets.chomp
 puts 'Please enter the second number...'
 number_two = gets.chomp
 
-puts 'What calculation would you like to perform? 1) add, 2) subtract, 3) multiply 4) divide'
+puts 'Please enter an operator... 1) add, 2) subtract, 3) multiply 4) divide'
 operator = gets.chomp
 
 if operator == '1'
