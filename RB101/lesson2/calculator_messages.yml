@@ -1,0 +1,28 @@
+en:
+  welcome: 'Welcome to Calculator! Please enter your name'
+  valid_name: 'Please enter a valid name'
+  first_number: 'Please enter the first number...'
+  second_number: 'Please enter the second number...'
+  valid_number: "Hmm... that doesn't look like a valid number"
+  operator_prompt: "What operation would you like to perform? \n
+    1 - add \n
+    2 - subtract \n
+    3 - multiply \n
+    4 - divide \n"
+  valid_operator: 'Choice must be 1, 2, 3 or 4'
+  more_calculations: 'Do you want to perform another calculation? (Y/N)'
+  sign_off: 'Thank you for using the calculator. Good bye!'
+es:
+  welcome: '¡Bienvenido a Calculadora! por favor, escriba su nombre'
+  valid_name: 'Por favor ingrese un nombre valido'
+  first_number: 'Introduzca el primer número ...'
+  second_number: 'Ingrese el segundo número ...'
+  valid_number: 'Hmm ... eso no parece un número válido'
+  operator_prompt: "¿Qué operación le gustaría realizar? \n
+    1 - sumar \n
+    2 - sustraer \n
+    3 - multiplicar \n
+    4 - dividir \n"
+  valid_operator: 'La elección debe ser 1, 2, 3 o 4'
+  more_calculations: '¿Quieres realizar otro cálculo? (S / N)'
+  sign_off: 'Gracias por usar la calculadora. ¡Adiós!'
