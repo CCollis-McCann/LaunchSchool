@@ -8,6 +8,27 @@ WINNING_COMBINATIONS = {
   'sp' => ['r', 'sc']
 }
 
+WELCOME = <<-MSG
+Welcome to "Rock, Paper, Scissors, Lizard, Spock".
+The rules (according to Sheldon Cooper) are;
+Scissors cuts Paper
+Paper covers Rock
+Rock crushes Lizard
+Lizard poisons Spock
+Spock smashes Scissors
+Scissors decapitates Lizard
+Lizard eats Paper
+Paper disproves Spock
+Spock vaporizes Rock
+(and as it always has) Rock crushes Scissors
+Please choose from:
+Rock = r
+Paper = p
+Scissors = sc
+Lizard = l
+Spock = sp
+MSG
+
 score_board = {
   player: 0,
   computer: 0
@@ -23,11 +44,11 @@ end
 
 def display_result(player, computer)
   if win?(player, computer)
-    prompt('You win!')
+    'You win!'
   elsif win?(computer, player)
-    prompt('Computer wins!')
+    'Computer wins!'
   else
-    prompt("It's a draw!")
+    "It's a draw!"
   end
 end
 
@@ -39,30 +60,44 @@ def track_score(player, computer, score_board)
   end
 end
 
+def display_score(score_board)
+  "Player = #{score_board[:player]} : Computer = #{score_board[:computer]}"
+end
+
+prompt(WELCOME)
+
 loop do
-  choice = ''
   loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}")
-    choice = gets.chomp
+    choice = ''
+    loop do
+      prompt("Choose one: #{VALID_CHOICES.join(', ')}")
+      choice = gets.chomp
 
-    if VALID_CHOICES.include?(choice)
-      break
-    else
-      prompt("That's not a valid choice...")
+      if VALID_CHOICES.include?(choice)
+        break
+      else
+        prompt("That's not a valid choice...")
+      end
     end
+
+    computer_choice = VALID_CHOICES.sample
+
+    puts("You chose #{choice}, the computer chose #{computer_choice}")
+
+    track_score(choice, computer_choice, score_board)
+    prompt(display_result(choice, computer_choice))
+    prompt(display_score(score_board))
+    break if score_board[:player] == 5 || score_board[:computer] == 5
   end
-
-  computer_choice = VALID_CHOICES.sample
-
-  puts("You chose #{choice}, the computer chose #{computer_choice}")
-
-  display_result(choice, computer_choice)
-
-  track_score(choice, computer_choice, score_board)
 
   prompt('Do you want to play again?')
   answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  if answer.downcase.start_with?('y')
+    score_board[:player] = 0
+    score_board[:computer] = 0
+  else
+    break
+  end
 end
 
 prompt('Thanks for playing, good bye!')
