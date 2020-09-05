@@ -12,9 +12,9 @@ def display_result(player, computer)
      (player == 'paper' && computer == 'rock') ||
      (player == 'scissors' && computer == 'paper')
     prompt('You win!')
-  elsif (computer == 'rock' && player == 'scissors') ||
-        (computer == 'paper' && player == 'rock') ||
-        (computer == 'scissors' && player == 'paper')
+  elsif (player == 'rock' && computer == 'paper') ||
+        (player == 'paper' && computer == 'scisssors') ||
+        (player == 'scissors' && computer == 'rock')
     prompt('Computer wins!')
   else
     prompt("It's a draw!")
