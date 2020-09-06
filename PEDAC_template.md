@@ -1,6 +1,9 @@
 ## (Understand the) Problem:
 
-Essential to understanding how to solve a problem. In order to be able to solve a problem, you have to at least understand what the problem is and what it is asking. Take some time to allow the problem to load into your brain. Don't rush this, first identify the inputs and the outputs of the problem.
+Essential to understanding how to solve a problem. In order to be able to solve
+a problem, you have to at least understand what the problem is and what it is
+asking. Take some time to allow the problem to load into your brain. Don't rush
+this, first identify the inputs and the outputs of the problem.
 
 input:
 
@@ -8,7 +11,11 @@ output:
 
 ##### Check for Problem Domain
 
-The Problem Domain is the area of expertise or application that needs to be examined to solve a problem. Basically, any domain-specific terms or concepts that may be applicable. This limits the scope of the problem. For example, if the problem asks you to add up a set of multiples, you need to make sure you know what multiples are. Could one word have multiple meanings etc.
+The Problem Domain is the area of expertise or application that needs to be
+examined to solve a problem. Basically, any domain-specific terms or concepts
+that may be applicable. This limits the scope of the problem. For example, if
+the problem asks you to add up a set of multiples, you need to make sure you
+know what multiples are. Could one word have multiple meanings etc.
 
 Problem Domain:
 
@@ -20,7 +27,8 @@ Implicit Requirements:
 
 ##### Clarifying Questions
 
-Some questions to ask the interviewer (or perhaps yourself) to better understand the problem.
+Some questions to ask the interviewer (or perhaps yourself) to better understand
+the problem.
 
 1.
 2.
