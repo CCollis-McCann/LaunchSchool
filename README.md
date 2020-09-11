@@ -1,2 +1,3 @@
-# launch-school
-Exercises and projects form Launch School's Ruby track
+# Launch School
+
+Exercises and projects from Launch School's Ruby track
