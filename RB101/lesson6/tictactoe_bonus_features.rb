@@ -4,7 +4,7 @@ PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
-                [[1, 5, 9], [3, 5, 7]] # diagonals
+                [[1, 5, 9], [3, 5, 7]]              # diagonals
 
 #### HELPER FUNCTIONS ####
 def prompt(msg)
@@ -18,9 +18,9 @@ end
 def detect_winner(brd)
   WINNING_LINES.each do |line|
     if brd.values_at(*line).count(PLAYER_MARKER) == 3
-      return 'Player'
+      return 'player'
     elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
-      return 'Computer'
+      return 'computer'
     end
   end
   nil
@@ -33,7 +33,7 @@ def joinor(arr, punc = ', ', word = 'or')
 end
 
 #### MAIN FUNCTIONS ####
-# rubocop:disable Metrics/AbcSize
+# rubocop: disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
   puts " You're a #{PLAYER_MARKER}. Computer is #{COMPUTER_MARKER}"
@@ -51,7 +51,7 @@ def display_board(brd)
   puts "     |     |"
   puts ""
 end
-# rubocop:enable Metrics/AbcSize
+# rubocop: enable Metrics/AbcSize
 
 def initialize_board
   new_board = {}
@@ -89,26 +89,40 @@ end
 
 #### MAIN GAME ####
 loop do
-  board = initialize_board
+  score = {
+    player: 0,
+    computer: 0
+  }
 
   loop do
+    board = initialize_board
+
+    #### ROUND LOOP ####
+    loop do
+      display_board(board)
+
+      player_places_piece!(board)
+      break if someone_won?(board) || board_full?(board)
+
+      computer_places_piece(board)
+      break if someone_won?(board) || board_full?(board)
+    end
+
     display_board(board)
 
-    player_places_piece!(board)
-    break if someone_won?(board) || board_full?(board)
+    if someone_won?(board)
+      score[detect_winner(board).to_sym] += 1
+      prompt "#{detect_winner(board).capitalize} won!"
+      prompt "Player: #{score[:player]} <=> Computer: #{score[:computer]}"
+    else
+      prompt "It's a tie!"
+    end
 
-    computer_places_piece(board)
-    break if someone_won?(board) || board_full?(board)
+    sleep(2)
+
+    break if score.any? { |_, val| val == 5 }
   end
-
-  display_board(board)
-
-  if someone_won?(board)
-    prompt "#{detect_winner(board)} won!"
-  else
-    prompt "It's a tie!"
-  end
-
+  prompt score[:player] == 5 ? 'You win the game!' : 'Better luck next time!'
   prompt 'Play again? (y or n)'
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
