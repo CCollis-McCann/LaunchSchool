@@ -32,6 +32,14 @@ def joinor(arr, punc = ', ', word = 'or')
   "#{arr.join(punc.to_s)} #{word} #{last_num}"
 end
 
+def find_at_risk_square(line, board)
+  if board.values_at(*line).count(PLAYER_MARKER) == 2
+    board.select do |key, val|
+      line.include?(key) && val == INITIAL_MARKER
+    end.keys.first
+  end
+end
+
 #### MAIN FUNCTIONS ####
 # rubocop: disable Metrics/AbcSize
 def display_board(brd)
@@ -75,7 +83,16 @@ def player_places_piece!(brd)
 end
 
 def computer_places_piece(brd)
-  square = empty_squares(brd).sample
+  square = nil
+  WINNING_LINES.each do |line|
+    square = find_at_risk_square(line, brd)
+    break if square
+  end
+
+  if !square
+    square = empty_squares(brd).sample
+  end
+
   brd[square] = COMPUTER_MARKER
 end
 
